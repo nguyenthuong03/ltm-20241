@@ -18,8 +18,8 @@
 ## Các bước cài đặt
 
 ### 1. Tải mã nguồn
-git clone https://github.com/yourusername/auction-system.git
-cd auction_app
+git clone https://github.com/nguyenthuong03/ltm-20241
+cd ltm-20241
 
 ### 2. Biên dịch chương trình
 make all
@@ -121,7 +121,7 @@ Auction_app/
 ## Hỗ trợ
 Nếu gặp vấn đề hoặc có câu hỏi, vui lòng liên hệ:
 - Email: thuong.nh2803@gmail.com
-- Github Issues: [Tạo Issue mới](https://github.com/nguyenthuong03/auction_app/issues)
+- Github Issues: [Tạo Issue mới](https://github.com/nguyenthuong03/ltm-20241/issues)
 
 ## Giấy phép
 Dự án này được phân phối dưới Giấy phép MIT - xem file LICENSE để biết thêm chi tiết.
