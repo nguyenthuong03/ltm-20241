@@ -1,4 +1,4 @@
-# Hệ Thống Đấu Giá Trực Tuyến - Hướng Dẫn Cài Đặt
+#Hệ Thống Đấu Giá Trực Tuyến - Hướng Dẫn Cài Đặt
 
 ## Tổng quan
 Đây là hệ thống đấu giá trực tuyến sử dụng giao thức TCP/IP được viết bằng ngôn ngữ C, hỗ trợ nhiều người dùng đồng thời, đấu giá thời gian thực và quản lý phòng đấu giá.
