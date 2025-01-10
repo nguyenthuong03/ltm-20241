@@ -1,10 +1,127 @@
-Ung dung dau gia
+# Hệ Thống Đấu Giá Trực Tuyến - Hướng Dẫn Cài Đặt
 
-Ung dung phat trien trong moi truong he dieu hanh ubuntu 20.04, su dung gcc C11 standard
+## Tổng quan
+Đây là hệ thống đấu giá trực tuyến sử dụng giao thức TCP/IP được viết bằng ngôn ngữ C, hỗ trợ nhiều người dùng đồng thời, đấu giá thời gian thực và quản lý phòng đấu giá.
 
-De compile, su dung make:
-	make all
-De khoi chay server
-	./server [port_number]
-De khoi chay client
-	./client [ip_address] [port_number]
+## Yêu cầu hệ thống
+### Phần mềm cần thiết:
+- Trình biên dịch GCC (phiên bản 9.4.0 trở lên)
+- Hệ thống build Make
+- Hệ điều hành Ubuntu 20.04 hoặc các bản phân phối Linux tương tự
+- Kiến thức cơ bản về terminal/command line
+
+### Cấu hình tối thiểu:
+- RAM: 1GB
+- Dung lượng ổ cứng trống: 100MB
+- Kết nối mạng cho giao tiếp client-server
+
+## Các bước cài đặt
+
+### 1. Tải mã nguồn
+git clone https://github.com/yourusername/auction-system.git
+cd auction_app
+
+### 2. Biên dịch chương trình
+make all
+
+### 3. Chạy chương trình
+
+#### Khởi động Server:
+./server [số_cổng]
+# Ví dụ: ./server 8080
+
+#### Khởi động Client:
+./client [địa_chỉ_IP_server] [số_cổng]
+# Ví dụ: ./client 127.0.0.1 8080
+
+## Hướng dẫn sử dụng
+### Hướng dẫn sử dụng giao diện trên terminal
+- Người dùng chưa có tài khoản chọn Create new account để tạo tài khoản
+- Người dùng đã có tài khoản chọn Login để đăng nhập
+- Sau khi đăng nhập thành công, người dùng có thể chọn tạo phòng mới, xem các phòng đấu giá, tham gia phòng, đăng xuất
+- Khi tham gia phòng, người dùng tạo phòng đấu giá mới để bán vật phẩm, mua vật phẩm
+### Lệnh cho Server
+- Khởi động server: `./server [cổng]`
+- Dừng server: Nhấn `Ctrl + C`
+
+### Lệnh cho Client
+1. Đăng nhập/Đăng ký:
+   - `LOGIN tên_đăng_nhập mật_khẩu`
+   - `REGISTER tên_đăng_nhập mật_khẩu`
+
+2. Quản lý phòng:
+   - `CREATE tên_phòng` - Tạo phòng đấu giá mới
+   - `JOIN tên_phòng` - Tham gia phòng
+   - `LIST` - Xem danh sách phòng
+   - `EXIT` - Rời phòng
+
+3. Lệnh đấu giá:
+   - `BID số_tiền` - Đặt giá
+   - `BUYNOW` - Mua ngay
+
+## Xử lý lỗi thường gặp
+
+1. **Lỗi "Connection Refused"**
+   - Kiểm tra server đã chạy chưa
+   - Kiểm tra IP và cổng đã đúng chưa
+   - Kiểm tra cài đặt tường lửa
+
+2. **Lỗi "Permission Denied"**
+   - Chạy lệnh `chmod +x server client`
+   - Sử dụng sudo nếu cần thiết
+
+3. **Lỗi "Address Already in Use"**
+   - Đợi vài phút
+   - Sử dụng cổng khác
+   - Tắt tiến trình đang sử dụng cổng: `kill $(lsof -t -i:[cổng])`
+
+## Cấu trúc thư mục
+Auction_app/
+├── docs/
+├── TCP_Client/
+│   ├── client.c
+│   ├── global_var.c
+│   ├── global_var.h
+│   ├── Makefile
+│   ├── menu.c
+│   ├── menu.h
+│   ├── recv_msg.c
+│   ├── recv_msg.h
+│   ├── respone.c
+│   ├── response.h
+│   ├── send_msg.c
+│   ├── send_msg.h
+├── TCP_Server/
+│   ├── .vscode/
+│   ├── auth/
+│   ├── bid/
+│   ├── item/
+│   ├── log/
+│   ├── main/
+│   ├── model/
+│   ├── msg/
+│   ├── room/
+│   ├── session/
+│   ├── val/
+│   ├── Makefile
+├── .gitignore
+├── account.txt
+├── client
+├── log.txt
+├── Makefile
+├── README
+
+
+## Thông tin bổ sung
+- Tối đa 100 người dùng đồng thời
+- Thời gian chờ mặc định: tối đa 3 lần đếm ngược
+- Cổng mặc định: 8080
+- File log được lưu tại: `/auction_app/log.txt/`
+
+## Hỗ trợ
+Nếu gặp vấn đề hoặc có câu hỏi, vui lòng liên hệ:
+- Email: thuong.nh2803@gmail.com
+- Github Issues: [Tạo Issue mới](https://github.com/nguyenthuong03/auction_app/issues)
+
+## Giấy phép
+Dự án này được phân phối dưới Giấy phép MIT - xem file LICENSE để biết thêm chi tiết.
